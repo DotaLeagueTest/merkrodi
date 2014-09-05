@@ -1,4 +1,4 @@
-
+﻿
 <html>
 
     <head>
@@ -12,7 +12,7 @@
 
         <br>
 
-        echo "<a href='http://amidaniram.ru/merkrodi/regv1/'>Главная страница</a>";
+        "<a href='http://amidaniram.ru/merkrodi/regv1/'>Регистрация V1</a>";
 
     </body>
 
