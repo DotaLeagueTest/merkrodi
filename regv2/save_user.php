@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +37,6 @@
         $avatar = "avatars/net-avatars.jpg";
     else //загружаем изображение пользователя
     {
-        echo "lol_2<br>";
         $path_to_90_directory    = 'avatars/';
         if(preg_match('/[.](jpg)|(JPG)|(jpeg)|(JPEG)|(gif)|(GIF)|(png)|(PNG)$/', $_FILES['picture']['name']))
         {
