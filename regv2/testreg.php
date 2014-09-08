@@ -48,6 +48,8 @@
     {
         $select = $connection->query("SELECT ip FROM ip_users WHERE ip='{$ip}'");
         $tmp = mysqli_fetch_row($select);
+        echo "ip: ".$ip;
+        echo "tmp[0]: ".$tmp[0];
         if ($ip == $tmp[0])
         {
             $result_2 = $connection->query("SELECT col FROM ip_users WHERE ip='{$ip}'");
@@ -71,7 +73,7 @@
             setcookie("password", $_POST["password"], time()+9999999);
         }
     }
-    echo "<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>";
+    //echo "<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>";
 ?>
 
 </html>
