@@ -71,7 +71,7 @@
             setcookie("password", $_POST["password"], time()+9999999);
         }
     }
-    //echo "<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>";
+    echo "<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>";
 ?>
 
 </html>
