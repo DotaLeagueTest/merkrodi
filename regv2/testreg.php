@@ -47,10 +47,10 @@
     if (empty($array['id']))
     {
         $select = $connection->query("SELECT ip FROM ip_users WHERE ip='{$ip}'");
-        $tmp = mysqli_fetch_row($select);
+        $tmp = mysqli_fetch_array($select);
         echo "ip: ".$ip;
-        echo "tmp[0]: ".$tmp[0];
-        if ($ip == $tmp[0])
+        echo "tmp[ip]: ".$tmp['ip']."<br>";
+        if ($ip == $tmp['ip'])
         {
             $result_2 = $connection->query("SELECT col FROM ip_users WHERE ip='{$ip}'");
             $array_2 = mysqli_fetch_array($result_2);
