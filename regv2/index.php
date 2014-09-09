@@ -32,6 +32,8 @@ echo <<<END
 END;
                     if (isset($_COOKIE['login']))
                         echo 'value="'.$_COOKIE['login'].'">';
+                    else
+                        echo '>';
 echo <<<WHERE
                     </p>
                     <p>
@@ -40,6 +42,8 @@ echo <<<WHERE
 WHERE;
                     if (isset($_COOKIE['password']))
                         echo 'value="'.$_COOKIE['password'].'">';
+                    else
+                        echo '>';
 echo <<<WHERE
                     </p>
                     <p>
