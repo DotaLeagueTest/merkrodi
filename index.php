@@ -14,6 +14,7 @@
 
         <a href='http://amidaniram.ru/merkrodi/regv1/'>Регистрация V1</a><br>
         <a href='http://amidaniram.ru/merkrodi/regv2/'>Регистрация V2</a><br>
+	<a href='http://amidaniram.ru/merkrodi/regv3/'>Регистрация V3</a><br>
 
     </body>
 
