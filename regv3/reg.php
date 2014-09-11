@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -20,14 +21,15 @@
                 <label>Выберите аватар. Изображение должно быть формата jpg:<br></label>
                 <input type="file" name="picture">
             </p>
-            <P>
+            <p>
                 <?php
                     require_once('recaptchalib.php');
                     $PublicKey = "6Ld-BvoSAAAAAJEh9wnd5aob8hDzl4N1-B2D4P2B";
                     echo recaptcha_get_html($PublicKey);
                 ?>
             </p>
-                <input type="submit" name="submit" value="Зарегестрироваться"
+            <p>
+                <input type="submit" name="submit" value="Зарегестрироваться">
             </p>
         </form>
     </body>
