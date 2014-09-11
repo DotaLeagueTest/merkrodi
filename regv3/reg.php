@@ -17,7 +17,7 @@
                 <input name="password" type="password" size="15" maxlength="15">
             </p>
             <p>
-                <label>Выберите аватар. Изображение должно быть формата jpg, gif или png:<br></label>
+                <label>Выберите аватар. Изображение должно быть формата jpg:<br></label>
                 <input type="file" name="picture">
             </p>
             <P>

@@ -46,7 +46,7 @@
         $path_to_90_directory    = 'avatars/';
         if(preg_match('/[.](jpg)|(JPG)|(jpeg)|(JPEG)$/', $_FILES['picture']['name']))
         {
-            $src = ImageCreateFromJPEG($_FILES['FupLoad']["tmp_name"]);
+            $src = ImageCreateFromJPEG($_FILES['picture']["tmp_name"]);
             $w_src = imagesx($src);
             $h_src = imagesy($src);
             if ($w_src > $h_src)
