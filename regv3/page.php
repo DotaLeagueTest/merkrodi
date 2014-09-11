@@ -46,10 +46,17 @@ LOL;
     {
         echo <<<LOL
         <form action = 'update_user.php' method = 'post'>
+            Изменить логин:<br>
+            <input name = 'login' type = 'text'>
+            <input type='submit' name='submit' value='Изменить'>
+        </form>
+        <br>
+        <form action = 'update_user.php' method = 'post'>
             Изменить пароль:<br>
             <input name = 'password' type = 'password'>
             <input type = 'submit' name = 'submit' value = 'Изменить'>
         </form>
+        <br>
         <form action = 'update_user.php' method = 'post' enctype = 'multipart/form-data'>
             Ваш аватар:<br>
             <img alt = 'Аватар' src='$array[avatar]'><br>

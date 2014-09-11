@@ -36,44 +36,37 @@
         exit ("Логин должен состоять не менее чем из 3 символов и не более чем из 15.");
     if (strlen($password) < 3 or strlen($password) > 30)
         exit ("Пароль должен состоять не менее чем из 3 символов и не более чем из 30.");
+
     if ($_FILES['picture']["error"] == 1)
         exit ("Ваш аватар превышает максимально допустимый размер 2MB");
-
-    if(!is_uploaded_file($_FILES['picture']["tmp_name"]))
-        $avatar = "avatars/net-avatars.jpg";
+    if(!is_uploaded_file($_FILES['picture']["tmp_name"]))//Проверяем, загружено ли изображение
+        $avatar = "avatars/net-avatars.jpg";//Присваем стандартное значение
     else //загружаем изображение пользователя
     {
         $path_to_90_directory    = 'avatars/';
-        if(preg_match('/[.](jpg)|(JPG)|(jpeg)|(JPEG)|(gif)|(GIF)|(png)|(PNG)$/', $_FILES['picture']['name']))
+        if(preg_match('/[.](jpg)|(JPG)|(jpeg)|(JPEG)$/', $_FILES['picture']['name']))
         {
-            $filename = $_FILES['picture']['name'];
-            $source = $_FILES['picture']['tmp_name'];
-            $target =    $path_to_90_directory . $filename;
-            move_uploaded_file($source,    $target);//загрузка оригинала в папку
-            if(preg_match('/[.](GIF)|(gif)$/',    $filename))
-                $im = imagecreatefromgif($path_to_90_directory.$filename);
-            if(preg_match('/[.](PNG)|(png)$/',    $filename))
-                $im = imagecreatefrompng($path_to_90_directory.$filename);
-            if(preg_match('/[.](JPG)|(jpg)|(jpeg)|(JPEG)$/', $filename))
-                $im = imagecreatefromjpeg($path_to_90_directory.$filename);
-
-//СОЗДАНИЕ КВАДРАТНОГО ИЗОБРАЖЕНИЯ И ЕГО ПОСЛЕДУЮЩЕЕ СЖАТИЕ
-            $w = 90;  //квадрат 90x90. Можно поставить и другой размер.
-            $w_src = imagesx($im); //вычисляем ширину
-            $h_src = imagesy($im); //вычисляем высоту изображения
-            $dest = imagecreatetruecolor($w,$w); //результирующее изображение
-            if ($w_src > $h_src)//обрезка изображения
-            imagecopyresampled($dest, $im, 0, 0, round((max($w_src,$h_src)-min($w_src,$h_src))/2), 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
-            if    ($w_src < $h_src)//обрезка изображения
-            imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, min($w_src,$h_src), min($w_src,$h_src));
-            if    ($w_src == $h_src)//обрезка изображения
-            imagecopyresampled($dest, $im, 0, 0, 0, 0, $w, $w, $w_src, $w_src);
-            $date = time();//Имя результирующего файла будет текущее время
-            imagejpeg($dest, $path_to_90_directory.$date.".jpg");
-            $avatar = $path_to_90_directory.$date.".jpg";//заносим в переменную путь до аватара.
-            //удаляем оригинал загруженного    изображения
-            $delfull = $path_to_90_directory.$filename;
-            unlink($delfull);
+            $src = ImageCreateFromJPEG($_FILES['FupLoad']["tmp_name"]);
+            $w_src = imagesx($src);
+            $h_src = imagesy($src);
+            if ($w_src > $h_src)
+            {
+                $koe = $w_src/90;
+                $new_h_src = ceil($h_src/$koe);
+                $dst = ImageCreateTrueColor (90, $new_h_src);
+                ImageCopyResampled ($dst, $src, 0, 0, 0, 0, 90, $new_h_src, $w_src, $h_src);
+            }
+            else
+            {
+                $koe = $h_src/90;
+                $new_w_src = ceil($w_src/$koe);
+                $dst = ImageCreateTrueColor ($new_w_src, 90);
+                ImageCopyResampled ($dst, $src, 0, 0, 0, 0, $new_w_src, 90, $w_src, $h_src);
+            }
+            $date = time();
+            imagejpeg($dst, $path_to_90_directory.$date.".jpg");
+            $avatar = $path_to_90_directory.$date.".jpg";
+            imagedestroy($src);
         }
         else
             exit ("Аватар должен быть в формате <strong>JPG,GIF или PNG</strong>");
