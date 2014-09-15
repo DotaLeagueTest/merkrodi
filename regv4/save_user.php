@@ -105,13 +105,20 @@
         $array = mysqli_fetch_array($result);
         $activation = md5($array['id']).md5($login);//код активации аккаунта.
         $subject = "Подтверждение регистрации";//тема сообщения
-        $message = "Здравствуйте! Спасибо за регистрацию на amidaniram.ru\n
-            Ваш логин: ".$login."\n
-            Перейдите по ссылке, чтобы активировать ваш аккаунт:\n
-            http://amidaniram.ru/merkrodi/regv3/activation.php?login=".$login."&code=".$activation."\n
-            С уважением,\n
-            Администрация amidaniram.ru";//содержание сообщение
-        mail($email, $subject, $message, "Content-type: text/plane; charset=windows-1251\r\n\r\n");//отправляем сообщение
+        $message = '<html>
+                        <head>
+                            <title>Activation</title>
+                        </head>
+                        <body>
+                            Здравствуйте! Спасибо за регистрацию на amidaniram.ru<br>
+                            Ваш логин: '.$login.'<br>
+                            Перейдите по ссылке, чтобы активировать ваш аккаунт:<br>
+                            http://amidaniram.ru/merkrodi/regv3/activation.php?login=".$login."&code=".$activation."<br>
+                            С уважением,<br>
+                            Администрация amidaniram.ru
+                        </body>
+                    </html>';//содержание сообщение
+        mail($email, $subject, $message, "Content-type: text/plane; charset=UTF-8\r\n\r\n");//отправляем сообщение
         echo "Вам на E-mail выслано письмо с cсылкой, для подтверждения регистрации. Внимание! Ссылка действительна 1 час. <a href='index.php'>Главная страница</a>";
     }
     else
