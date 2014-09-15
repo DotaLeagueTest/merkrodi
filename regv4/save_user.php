@@ -113,7 +113,7 @@
                             Здравствуйте! Спасибо за регистрацию на amidaniram.ru<br>
                             Ваш логин: '.$login.'<br>
                             Перейдите по ссылке, чтобы активировать ваш аккаунт:<br>
-                            http://amidaniram.ru/merkrodi/regv3/activation.php?login=".$login."&code=".$activation."<br>
+                            http://amidaniram.ru/merkrodi/regv4/activation.php?login='.$login.'&code='.$activation.'<br>
                             С уважением,<br>
                             Администрация amidaniram.ru
                         </body>
