@@ -111,7 +111,7 @@
             http://amidaniram.ru/merkrodi/regv3/activation.php?login=".$login."&code=".$activation."\n
             С уважением,\n
             Администрация amidaniram.ru";//содержание сообщение
-        mail($email, $subject, $message, "Content-type: text/plane; charset=UTF-8\r\n\r\n");//отправляем сообщение
+        mail($email, $subject, $message, "Content-type: text/plane; charset=windows-1251\r\n\r\n");//отправляем сообщение
         echo "Вам на E-mail выслано письмо с cсылкой, для подтверждения регистрации. Внимание! Ссылка действительна 1 час. <a href='index.php'>Главная страница</a>";
     }
     else
