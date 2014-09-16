@@ -34,7 +34,7 @@ LOL;
     {
         include "bd.php";
         $result = $connection->query("SELECT id FROM users WHERE login='{$login}' AND email='{$email}' AND activation='1'");
-        $array = mysql_fetch_array($result);
+        $array = mysqli_fetch_array($result);
         if (empty($array['id']) or $array['id'] == '')
             exit ("Пользователя с таким e-mail адресом не обнаружено. <a href='index.php'>Главная страница</a>");
         $new_password = uniqid(mt_rand(), true);
