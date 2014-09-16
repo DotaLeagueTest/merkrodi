@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Забыли пароль?</title>
-</head>
+
 
 <?php
     if(isset($_POST['login']))
@@ -60,6 +60,6 @@ LOL;
                         </body>
                     </html>';
         mail($email, "Восстановление пароля", $message, "Content-type: text/html; charset=UTF-8\r\n\r\n");
+        echo    "<meta http-equiv='Refresh' content='5; URL=index.php'></head><body>На Ваш e-mail отправлено письмо с паролем. Вы будете перемещены через 5 сек. Если не хотите ждать, то <a href='index.php'>нажмите сюда.</a></body></html>";
     }
 ?>
-</html>
