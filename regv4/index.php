@@ -2,6 +2,15 @@
 <?php
     session_start();
     include ("bd.php");
+    if (isset($_COOKIE['auto']) and isset($_COOKIE['login']) and isset($_COOKIE['password']))
+    {
+        if ($_COOKIE['auto'] == 'yes')
+        {
+            $_SESSION['password'] = md5(strrev(md5($_COOKIE['password'])))."lol";
+            $_SESSION['login']=$_COOKIE['login'];
+            $_SESSION['id']=$_COOKIE['id'];
+        }
+    }
     if(!empty($_SESSION['login']) and !empty($_SESSION['password']))
     {
         $login = $_SESSION['login'];
@@ -48,12 +57,17 @@ LOL;
 echo <<<LOL
                     </p>
                     <p>
-                        <input name="save" type="checkbox"    value='1'> Запомнить меня.
+                        <input name="save" type="checkbox" value='1'> Запомнить меня.
+                    </p>
+                    <p>
+                        <input name="autovhod" type="checkbox" value='1'> Автоматический вход.
                     </p>
                     <p>
                         <input type="submit" name="submit" value="Войти">
                         <br>
                         <a href="reg.php">Зарегистрироваться</a>
+                        <br>
+                        <a href="send_pass.php">Забыли пароль?</a>
                     </p>
                 </form>
                 <br>

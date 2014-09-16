@@ -5,5 +5,6 @@
     unset($_SESSION['login']);
     unset($_SESSION['password']);
     unset($_SESSION['id']);
+    setcookie("auto", "", time()+9999999); //очищаем автоматический вход
     exit("<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>");
 ?>

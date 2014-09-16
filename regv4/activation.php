@@ -1,3 +1,10 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Activation</title>
+</head>
+
 <?php
     include "bd.php";
     $result = $connection->query("SELECT avatar FROM users WHERE activation = '0' AND UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date) > 3600");
@@ -30,3 +37,4 @@
     else
         echo "Ошибка! Ваш Е-мейл не подтвержден! <a href='index.php'>Главная страница</a>";
 ?>
+</html>

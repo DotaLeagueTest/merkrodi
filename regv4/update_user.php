@@ -42,6 +42,8 @@
         {
             $connection->query("UPDATE message SET author='{$login}' WHERE author='{$old_login}'");
             $_SESSION['login'] = $login;
+            if    (isset($_COOKIE['login']))
+                setcookie("login", $login, time()+9999999);
             echo "<meta http-equiv = 'Refresh' content='5; URL=page.php?id=".$_SESSION['id']."'></head><body>Ваш логин изменен! Вы будете перемещены через 5 сек. Если не хотите ждать, то <a href='page.php?id=".$_SESSION['id']."'>нажмите    сюда.</a></body></html>";
         }
     }
@@ -64,6 +66,8 @@
         if ($result == 'true')
         {
             $_SESSION['password'] = $password;
+            if (isset($_COOKIE['password']))
+                setcookie("password", $_POST['password'], time()+9999999);
             echo "<meta http-equiv = 'Refresh' content='5; URL=page.php?id=".$_SESSION['id']."'></head><body>Ваш пароль изменен! Вы будете перемещены через 5 сек. Если не хотите ждать, то <a href='page.php?id=".$_SESSION['id']."'>нажмите сюда.</a></body></html>";
         }
     }

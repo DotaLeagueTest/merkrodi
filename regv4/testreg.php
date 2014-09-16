@@ -70,6 +70,14 @@
         {
             setcookie("login", $_POST["login"], time()+9999999);
             setcookie("password", $_POST["password"], time()+9999999);
+            setcookie("id", $array['id'], time()+9999999);
+        }
+        if (isset($_POST['autovhod']) && $_POST['autovhod'] == 1)
+        {
+            setcookie("auto", "yes", time()+9999999);
+            setcookie("login", $_POST["login"], time()+9999999);
+            setcookie("password", $_POST["password"], time()+9999999);
+            setcookie("id", $array['id'], time()+9999999);
         }
     }
     echo "<meta http-equiv='Refresh' content='0; URL=index.php'></head></html>";

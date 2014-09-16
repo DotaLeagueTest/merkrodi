@@ -30,7 +30,7 @@ else
     echo <<<LOL
     | <a href='page.php?id=$_SESSION[id]'>Моя страница</a> | <a href='index.php'>Главная страница</a> | <a href='all_users.php'>Список пользователей</a> | <a href='exit.php'>Выход</a><br>
 LOL;
-    $result = $connection->query("SELECT login, id FROM users ORDER BY login");
+    $result = $connection->query("SELECT login, id FROM users WHERE activation='1' ORDER BY login");
     $array = mysqli_fetch_array($result);
     do
     {
