@@ -60,6 +60,8 @@
     }
     else
     {
+        if($array['activation'] == 0)
+            exit("Ваш аккаунт не активирован, проверьте почту! <a href='index.php'>На главную страницу.</a>");
         $_SESSION['password'] = $array['password'];//error
         $_SESSION['login'] = $array['login'];
         $_SESSION['id'] = $array['id'];
